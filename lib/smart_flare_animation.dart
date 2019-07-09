@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/camera.dart';
 
 class Size {
-  static const double width = 295.0;
-  static const double height = 251.0;
+  static const double width = double.infinity;
+  static const double height = 200.0;
 }
 
 class SmartFlareAnimation extends StatefulWidget {
@@ -19,8 +19,10 @@ class _SmartFlareAnimationState extends State<SmartFlareAnimation> {
   @override
   Widget build(BuildContext context) {
     return Container(
+//      constraints: BoxConstraints(minWidth: double.infinity),
       height: Size.height,
       width: Size.width,
+//      color: Color.fromARGB(255, 255, 0, 240),
       child: GestureDetector(
         onTapUp: (tapInfo) {
           _tapPosition(tapInfo, animationControls);
@@ -41,7 +43,7 @@ class _SmartFlareAnimationState extends State<SmartFlareAnimation> {
 
     if (topHalf && left) {
       // _playAnimation('camera_tapped');
-      
+
       // new Camera().build(context);
 
       Navigator.push(
@@ -51,7 +53,6 @@ class _SmartFlareAnimationState extends State<SmartFlareAnimation> {
 
       _playAnimation('deactivate');
       isOpen = false;
-
     } else if (!topHalf) {
       if (isOpen) {
         _playAnimation('deactivate');
