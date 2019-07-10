@@ -3,9 +3,9 @@ import 'package:flutter_app/camera.dart';
 import 'package:flutter_app/plannet_animation.dart';
 
 class MainArea extends StatefulWidget {
-
-  PAGES page;
-  MainArea({Key key, this.page}) : super(key: key);
+  // PAGES page;
+  PageController pageController;
+  MainArea({Key key, this.pageController}) : super(key: key);
 
   @override
   MainAreaState createState() => MainAreaState();
@@ -14,8 +14,6 @@ class MainArea extends StatefulWidget {
 enum PAGES { CAMERA, DASHBOARD, INFO }
 
 class MainAreaState extends State<MainArea> {
-  // PAGES page = PAGES.DASHBOARD;
-
   @override
   void initState() {
     super.initState();
@@ -23,12 +21,20 @@ class MainAreaState extends State<MainArea> {
 
   @override
   Widget build(BuildContext context) {
-    return _display();
+    return PageView(
+      physics: NeverScrollableScrollPhysics(),
+      controller: widget.pageController,
+      children: <Widget>[
+        Container(child: _display(PAGES.CAMERA)),
+        Container(child: _display(PAGES.DASHBOARD)),
+        Container(child: _display(PAGES.INFO)),
+      ],
+    );
   }
 
   // Displays for each page !!
-  _display() {
-    switch (widget.page) {
+  _display(PAGES page) {
+    switch (page) {
       case PAGES.CAMERA:
         return Camera();
         break;

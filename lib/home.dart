@@ -8,7 +8,7 @@ class Home extends StatefulWidget {
 }
 
 class _FlareDemoState extends State<Home> {
-  PAGES page = PAGES.DASHBOARD;
+  PageController _pageController = PageController(initialPage: PAGES.DASHBOARD.index);
 
   @override
   void initState() {
@@ -18,7 +18,7 @@ class _FlareDemoState extends State<Home> {
   // Child will notify this function when an image is clicked from the menu
   void _switchPage(PAGES pageEnum) {
     setState(() {
-      page = pageEnum;
+      _pageController.animateToPage(pageEnum.index, duration: Duration(milliseconds: 400), curve: Curves.easeInOut);
     });
   }
 
@@ -33,7 +33,7 @@ class _FlareDemoState extends State<Home> {
           //  ),
           Expanded(
             child: MainArea(
-              page: page,
+              pageController: _pageController,
             )
           ),
           Container(

@@ -26,7 +26,12 @@ class _Cam2State extends State<Camera> {
 
   @override
   void dispose() {
-    _camera.stopImageStream();
+    if(_camera != null) {
+      // _camera.dispose();
+      _camera.stopImageStream();
+    }
+    // _camera.dispose();
+    // _camera.stopImageStream();
     // _camera.dispose();
     super.dispose();
     print('stop video stream');
