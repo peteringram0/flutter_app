@@ -8,8 +8,8 @@ class SmartFlareAnimation extends StatefulWidget {
   final Function(PAGES page) notifyParent;
   SmartFlareAnimation({Key key, @required this.notifyParent}) : super(key: key);
 
-  final double width = 200.0;
-  final double height = 200.0;
+  final double width = 250.0;
+  final double height = 250.0;
   _SmartFlareAnimationState createState() => _SmartFlareAnimationState();
 }
 

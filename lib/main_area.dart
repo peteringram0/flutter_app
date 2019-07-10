@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/camera.dart';
 import 'package:flutter_app/plannet_animation.dart';
+import 'package:flutter_app/moon_animation.dart';
 
 class MainArea extends StatefulWidget {
   // PAGES page;
@@ -42,7 +43,8 @@ class MainAreaState extends State<MainArea> {
         return PlannetAnimation();
         break;
       case PAGES.INFO:
-        return PlannetAnimation(plannet: 'Mars');
+        // return PlannetAnimation(plannet: 'Mars');
+        return MoonAnimation();
         break;
     }
   }
