@@ -13,6 +13,10 @@ class _FlareDemoState extends State<Home> {
   @override
   void initState() {
     super.initState();
+
+    setState(() {
+      // loadedPage = PAGES.INFO;
+    });
   }
 
   @override
@@ -26,9 +30,10 @@ class _FlareDemoState extends State<Home> {
           //  ),
           Expanded(
               child: MainArea(
+                page: loadedPage,
                   // page: _page
                   // page: 'sss',
-                  // page: loadedPage
+                  // page: loadedPagepage
                   ) // @TODO i want to be able to control the loaded page at this level
               ),
           Container(
