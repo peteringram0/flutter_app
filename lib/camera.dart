@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'package:camera/camera.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 Future<CameraDescription> getCamera(CameraLensDirection dir) async {
-  return await availableCameras().then(
-    (List<CameraDescription> cameras) => cameras.firstWhere(
-          (CameraDescription camera) => camera.lensDirection == dir,
-        ),
-  );
+  return await availableCameras()
+      .then((List<CameraDescription> cameras) => cameras.firstWhere(
+            (CameraDescription camera) => camera.lensDirection == dir,
+          ));
 }
 
 class Camera extends StatefulWidget {
@@ -27,30 +26,38 @@ class _Cam2State extends State<Camera> {
 
   @override
   void dispose() {
-    _camera.stopImageStream();
+    // _camera.stopImageStream();
+    _camera.dispose();
     super.dispose();
     print('stop video stream');
   }
 
   void _initializeCamera() async {
-    CameraDescription description = await getCamera(CameraLensDirection.front);
+    
+    CameraDescription description;
 
-    _camera = CameraController(description, ResolutionPreset.medium, enableAudio: false);
-    await _camera.initialize();
+    try {
+      description = await getCamera(CameraLensDirection.front);
+    } catch (err) {
+      return print('No cam detected !!');
+    }
+
+    _camera = CameraController(description, ResolutionPreset.medium,
+        enableAudio: false);
+        await _camera.initialize();
 
     _camera.startImageStream((CameraImage image) {
       setState(() {
         _camImage = image;
       });
     });
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: _camera == null
-          ? const Center(
+          ? Center(
               child: Text(
                 'Initializing Camera...',
                 style: TextStyle(
@@ -61,15 +68,22 @@ class _Cam2State extends State<Camera> {
           : Stack(
               // fit: StackFit.expand,
               children: <Widget>[
+                // AspectRatio(
+                //   aspectRatio: _camera.value.aspectRatio,
+                //   child: CameraPreview(_camera),
+                // ),
 
-                AspectRatio(
-                  aspectRatio: _camera.value.aspectRatio,
-                  child: CameraPreview(_camera),
-                ),
-
+                Transform.scale(
+                  scale: 1.2 / _camera.value.aspectRatio,
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: _camera.value.aspectRatio,
+                      child: CameraPreview(_camera),
+                    ),
+                  ),
+                )
               ],
             ),
     );
   }
-
 }

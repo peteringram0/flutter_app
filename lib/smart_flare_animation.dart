@@ -41,10 +41,8 @@ class _SmartFlareAnimationState extends State<SmartFlareAnimation> {
     var topHalf = localTouchPosition.dy < Size.height / 2;
     var left = localTouchPosition.dx < Size.width / 3;
 
-    if (topHalf && left) {
-      // _playAnimation('camera_tapped');
-
-      // new Camera().build(context);
+    if (topHalf && left && isOpen) {
+      _playAnimation('camera_tapped');
 
       Navigator.push(
         context,
