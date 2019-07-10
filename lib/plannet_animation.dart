@@ -14,7 +14,7 @@ class PlannetAnimation extends StatelessWidget {
         child: FlareActor(
           'assets/' + plannet + '.flr',
           controller: FlareControls(),
-          // animation: 'active',
+          animation: 'active',
         ),
       ),
     );

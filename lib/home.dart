@@ -8,14 +8,17 @@ class Home extends StatefulWidget {
 }
 
 class _FlareDemoState extends State<Home> {
-  PAGES loadedPage = PAGES.DASHBOARD;
+  PAGES page = PAGES.DASHBOARD;
 
   @override
   void initState() {
     super.initState();
+  }
 
+  // Child will notify this function when an image is clicked from the menu
+  void _switchPage(PAGES pageEnum) {
     setState(() {
-      // loadedPage = PAGES.INFO;
+      page = pageEnum;
     });
   }
 
@@ -29,16 +32,15 @@ class _FlareDemoState extends State<Home> {
           //  title: const Text('page'),
           //  ),
           Expanded(
-              child: MainArea(
-                page: loadedPage,
-                  // page: _page
-                  // page: 'sss',
-                  // page: loadedPagepage
-                  ) // @TODO i want to be able to control the loaded page at this level
-              ),
+            child: MainArea(
+              page: page,
+            )
+          ),
           Container(
             alignment: Alignment.bottomCenter,
-            child: SmartFlareAnimation(),
+            child: SmartFlareAnimation(
+              notifyParent: _switchPage,
+            ),
           ),
         ],
       ),

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/camera.dart';
 import 'package:flutter_app/plannet_animation.dart';
-import 'dart:io';
 
 class MainArea extends StatefulWidget {
 
   PAGES page;
-  MainArea({this.page});
+  MainArea({Key key, this.page}) : super(key: key);
 
   @override
   MainAreaState createState() => MainAreaState();
@@ -20,16 +19,6 @@ class MainAreaState extends State<MainArea> {
   @override
   void initState() {
     super.initState();
-    print(widget.page);
-    // sleep(const Duration(seconds: 3));
-    // updatePage(PAGES.INFO);
-    // sleep(const Duration(seconds:3));
-  }
-
-  void updatePage(PAGES a) {
-    setState(() {
-      widget.page = a;
-    });
   }
 
   @override

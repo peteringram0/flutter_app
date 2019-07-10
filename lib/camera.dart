@@ -26,8 +26,8 @@ class _Cam2State extends State<Camera> {
 
   @override
   void dispose() {
-    // _camera.stopImageStream();
-    _camera.dispose();
+    _camera.stopImageStream();
+    // _camera.dispose();
     super.dispose();
     print('stop video stream');
   }
@@ -61,7 +61,7 @@ class _Cam2State extends State<Camera> {
               child: Text(
                 'Initializing Camera...',
                 style: TextStyle(
-                  fontSize: 30.0,
+                  color: Colors.white
                 ),
               ),
             )
@@ -74,7 +74,7 @@ class _Cam2State extends State<Camera> {
                 // ),
 
                 Transform.scale(
-                  scale: 1.2 / _camera.value.aspectRatio,
+                  scale: 1 / _camera.value.aspectRatio,
                   child: Center(
                     child: AspectRatio(
                       aspectRatio: _camera.value.aspectRatio,
