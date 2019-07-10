@@ -10,23 +10,26 @@ class _FlareDemoState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 112, 0, 240),
-        body: Column(
-          children: <Widget>[
+      backgroundColor: Color.fromARGB(255, 112, 0, 240),
+      body: Column(
+        children: <Widget>[
 //            AppBar(
 //              title: const Text('page'),
 //            ),
-            Expanded(
-              child: Align(
-                child: Text('Stuff here'),
+          Expanded(
+            child: Align(
+              child: Text(
+                'Welcome',
+                style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
-            Container(
-              alignment: Alignment.bottomCenter,
-              child: SmartFlareAnimation(),
-            ),
-          ],
-        );
-    )
+          ),
+          Container(
+            alignment: Alignment.bottomCenter,
+            child: SmartFlareAnimation(),
+          ),
+        ],
+      ),
+    );
   }
 }

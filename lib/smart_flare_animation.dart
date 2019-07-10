@@ -2,6 +2,7 @@ import 'package:flare_flutter/flare_actor.dart';
 import 'package:flare_flutter/flare_controls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/camera.dart';
+import 'package:flutter_app/cam2.dart';
 
 class Size {
   static const double width = double.infinity;
